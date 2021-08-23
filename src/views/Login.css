@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Login {
+  position: relative;
+  font-family: 'Lato', sans-serif;
+}
+
+.Login-photos-container {
+  width: 900px;
+  height: 100vh;
+  position: relative;
+  background-color: #fff;
+  border-left: 50px solid #000000;
+}
+
+.Login-photos-container img {
+  height: 300px;
+  position: absolute;
+}
+
+.Login-form-container {
+  position: absolute;
+  right: 20%;
+  top: 25%;
+  height: 450px;
+  width: 350px;
+  /* background-color: blue; */
+  box-shadow: 5px 5px 25px 3px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+.Login-form-container form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Login-form-container form h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 28px;
+  color: #6741d9;
+}
+
+.Login-form-container form label.field {
+  display: block;
+  font-weight: 600;
+}
+
+.Login-form-container form input.field {
+  width: 100%;
+  text-align: center;
+  height: 30px;
+  border: none;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.Login-form-container form input.field:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+.Login-form-container [type='radio'] {
+  margin-right: 10px;
+}
+
+.Login-form-container .radio-btn {
+  margin-bottom: 6px;
+}
+
+.Login-form-container button {
+  border: none;
+  margin-top: 20px;
+  padding: 10px 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #6741d9;
+}
+
+.photo-1 {
+  left: 50px;
+  top: 20px;
+}
+
+.photo-2 {
+  right: 50px;
+  top: 280px;
+}
+
+.photo-3 {
+  left: 50px;
+  top: 520px;
+}
+
+.photo-4 {
+  right: 50px;
+  top: 800px;
+}
