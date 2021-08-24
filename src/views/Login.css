@@ -14,7 +14,7 @@
   height: 100vh;
   position: relative;
   background-color: #fff;
-  border-left: 50px solid #000000;
+  border-left: 50px solid #6741d9;
 }
 
 .Login-photos-container img {
@@ -24,6 +24,7 @@
 
 .Login-form-container {
   position: absolute;
+  background-color: #fff;
   right: 20%;
   top: 25%;
   height: 450px;
@@ -31,6 +32,7 @@
   /* background-color: blue; */
   box-shadow: 5px 5px 25px 3px rgba(0, 0, 0, 0.15);
   padding: 20px;
+  z-index: 20;
 }
 
 .Login-form-container form {

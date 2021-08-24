@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
+import Dashboard from './views/Dashboard'
 import Home from './views/Home'
 import Login from './views/Login'
 
@@ -14,6 +15,12 @@ function App() {
       </Route>
       <Route exact path="/login">
         <Login />
+      </Route>
+      <Route exact path="/customers/dashboard">
+        <Dashboard />
+      </Route>
+      <Route exact path="/couriers/dashboard">
+        <Dashboard />
       </Route>
     </Switch>
   )
