@@ -5,7 +5,7 @@ import './Home.css'
 const Home = () => {
   const history = useHistory()
 
-  const handleClick = () => history.push('/login')
+  const handleClick = route => history.push(`/${route}`)
 
   return (
     <div className="Home">
@@ -13,15 +13,21 @@ const Home = () => {
         <ul>
           <li className="Home-header--brand">GOODS & TRANSPORT</li>
           <li>
-            <ul class="Home-header-menu">
+            <ul className="Home-header-menu">
               <li>SOLUTIONS</li>
               <li>COMPANY</li>
               <li>RESOURCES</li>
             </ul>
           </li>
           <li>
-            <button className="Home-header--login-btn" onClick={handleClick}>
+            <button className="Home-header--login-btn" onClick={() => handleClick('login')}>
               Log In
+            </button>
+            <button
+              className="Home-header--login-btn btn-signup"
+              onClick={() => handleClick('signup')}
+            >
+              Sign Up
             </button>
           </li>
         </ul>

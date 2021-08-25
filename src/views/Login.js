@@ -38,6 +38,7 @@ const Login = () => {
         history.push({
           pathname: `${state.userType}s/dashboard`,
           state: response.data.data.customer,
+          userType: state.userType,
           // state: { userType, id: response.data.id },
         })
       else throw new Error('Required')

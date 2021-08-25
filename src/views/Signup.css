@@ -4,12 +4,12 @@
   box-sizing: border-box;
 }
 
-.Login {
+.Signup {
   position: relative;
   font-family: 'Lato', sans-serif;
 }
 
-.Login-photos-container {
+.Signup-photos-container {
   width: 900px;
   height: 100vh;
   position: relative;
@@ -17,17 +17,17 @@
   border-left: 50px solid #6741d9;
 }
 
-.Login-photos-container img {
+.Signup-photos-container img {
   height: 300px;
   position: absolute;
 }
 
-.Login-form-container {
+.Signup-form-container {
   position: absolute;
   background-color: #fff;
   right: 20%;
-  top: 25%;
-  height: 450px;
+  top: 15%;
+  /* height: 450px; */
   width: 350px;
   /* background-color: blue; */
   box-shadow: 5px 5px 25px 3px rgba(0, 0, 0, 0.15);
@@ -35,26 +35,26 @@
   z-index: 20;
 }
 
-.Login-form-container form {
+.Signup-form-container form {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.Login-form-container form h2 {
+.Signup-form-container form h2 {
   text-align: center;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   font-size: 28px;
   color: #6741d9;
 }
 
-.Login-form-container form label.field {
+.Signup-form-container form label.field {
   display: block;
   font-weight: 600;
 }
 
-.Login-form-container form input.field {
+.Signup-form-container form input.field {
   width: 100%;
   text-align: center;
   height: 30px;
@@ -63,20 +63,20 @@
   border-bottom: 1px solid black;
 }
 
-.Login-form-container form input.field:focus {
+.Signup-form-container form input.field:focus {
   border: none;
   outline: none;
   border-bottom: 1px solid black;
 }
-.Login-form-container [type='radio'] {
+.Signup-form-container [type='radio'] {
   margin-right: 10px;
 }
 
-.Login-form-container .radio-btn {
+.Signup-form-container .radio-btn {
   margin-bottom: 6px;
 }
 
-.Login-form-container button {
+.Signup-form-container button {
   border: none;
   margin-top: 20px;
   padding: 10px 0;
@@ -86,6 +86,24 @@
   color: #fff;
   cursor: pointer;
   background-color: #6741d9;
+}
+
+.Signup-form-container .disabled {
+  color: #6741d9;
+  border: 2px solid #6741d9;
+  background-color: #fff;
+  cursor: not-allowed;
+}
+
+.Signup-choice {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.Signup-choice button {
+  flex-basis: 100px;
 }
 
 .photo-1 {

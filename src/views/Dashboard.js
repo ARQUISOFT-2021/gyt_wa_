@@ -28,6 +28,7 @@ const reducer = (state, action) => {
 const Dashboard = () => {
   const [parcels, setParcels] = useState([])
   const location = useLocation()
+  const history = useHistory()
 
   const [state, dispatch] = useReducer(reducer, {
     name: '',
@@ -52,15 +53,42 @@ const Dashboard = () => {
     setParcels(data.data.parcels)
   }
 
+  const handleDeleteParcel = async id => {
+    try {
+      await axios.delete(`http://localhost:2020/parcels/${id}`)
+      alert('Parcel Succesfully Deleted')
+      loadParcels()
+    } catch (error) {
+      alert('ERROR: PARCEL NOT DELETED')
+    }
+  }
+
+  const handleDeleteUser = async id => {
+    try {
+      await axios.delete(`http://localhost:2020/${location.userType}s/${id}`)
+      alert('USER SUCCESFULLY DELETED')
+      console.log('USER ID', id)
+      history.push({
+        // pathname: `${state.userType}s/dashboard`,
+        // state: response.data.data.customer,
+        pathname: '/',
+        // state: { userType, id: response.data.id },
+      })
+    } catch (error) {
+      alert('ERROR: USER NOT DELETED')
+    }
+  }
+
   const handleSubmit = async e => {
     e.preventDefault()
 
     try {
       const response = await axios.post(`http://localhost:2020/parcels`, state)
       console.log(response)
-      alert('AWESOME: PACKAGE JUST CREATED')
+      alert('AWESOME: PARCEL JUST CREATED')
+      loadParcels()
     } catch (error) {
-      alert('ERROR: PACKAGE NOT CREATED')
+      alert('ERROR: PARCEL NOT CREATED')
     }
   }
 
@@ -78,9 +106,12 @@ const Dashboard = () => {
               <p className="Dashboard__user-info--fieldValue">{entry[1]}</p>
             </div>
           ))}
+          <button className="btn btn-delete" onClick={() => handleDeleteUser(location.state._id)}>
+            DELETE ME
+          </button>
         </article>
         <article className="Dashboard__user-info parcels">
-          <h3 onClick={() => loadParcels()}>Load Parcels</h3>
+          <h3 onClick={() => loadParcels()}>Load My Parcels</h3>
           {parcels.map(parcel => (
             <div
               key={parcel._id}
@@ -92,6 +123,9 @@ const Dashboard = () => {
                   <p className="Dashboard__user-info--fieldValue">{String(entry[1])}</p>
                 </div>
               ))}
+              <button className="btn btn-delete" onClick={() => handleDeleteParcel(parcel._id)}>
+                DELETE PARCEL
+              </button>
             </div>
           ))}
         </article>

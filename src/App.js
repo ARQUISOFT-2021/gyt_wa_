@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from 'react-router-dom'
 import Dashboard from './views/Dashboard'
 import Home from './views/Home'
 import Login from './views/Login'
+import Signup from './views/Signup'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
       </Route>
       <Route exact path="/login">
         <Login />
+      </Route>
+      <Route exact path="/signup">
+        <Signup />
       </Route>
       <Route exact path="/customers/dashboard">
         <Dashboard />
