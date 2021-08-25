@@ -44,6 +44,8 @@ const Dashboard = () => {
   const { name, sender_id, receiver_id, weight, long, width, height } = state
 
   console.log(location.state)
+  delete location.state['password']
+  delete location.state['__v']
 
   const loadParcels = async () => {
     const { data } = await axios.get(
