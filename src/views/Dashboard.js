@@ -44,12 +44,16 @@ const Dashboard = () => {
   const { name, sender_id, receiver_id, weight, long, width, height } = state
 
   console.log(location.state)
-  delete location.state['password']
-  delete location.state['__v']
+  localStorage.setItem('_id', location.state._id)
+  location.userType && localStorage.setItem('userType', location.userType)
+  localStorage.setItem('token', location.state.token)
+  // console.log('LOCAL ISSSS', localStorage.getItem('customer'))
+  // delete location.state['password']
+  // delete location.state['__v']
 
   const loadParcels = async () => {
     const { data } = await axios.get(
-      `http://localhost:2020/parcels/customers/${location.state._id}`
+      `http://localhost:2020/parcels/customers/${localStorage.getItem('_id')}`
     )
     console.log(data.data.parcels)
     setParcels(data.data.parcels)
@@ -67,9 +71,10 @@ const Dashboard = () => {
 
   const handleDeleteUser = async id => {
     try {
-      await axios.delete(`http://localhost:2020/${location.userType}s/${id}`)
+      await axios.delete(`http://localhost:2020/${localStorage.getItem('userType')}s/${id}`)
       alert('USER SUCCESFULLY DELETED')
       console.log('USER ID', id)
+      localStorage.clear()
       history.push({
         // pathname: `${state.userType}s/dashboard`,
         // state: response.data.data.customer,
@@ -94,10 +99,39 @@ const Dashboard = () => {
     }
   }
 
+  const handlePremium = async () => {
+    try {
+      const { data } = await axios.post(
+        `http://localhost:2020/${localStorage.getItem('userType')}s/premium`,
+        {
+          token: localStorage.getItem('token'),
+        }
+      )
+      // alert('USER SUCCESFULLY DELETED')
+      console.log(data)
+      // alert(data.message)
+      if (data.message === 'PREMIUM') {
+        history.push({
+          // pathname: `${state.userType}s/dashboard`,
+          // state: response.data.data.customer,
+          pathname: `/${localStorage.getItem('userType')}s/premium`,
+          // state: { userType, id: response.data.id },
+        })
+      } else {
+        alert('ERROR: INVALID/EXPIRED TOKEN')
+      }
+    } catch (error) {
+      alert('ERROR: INVALID/EXPIRED TOKEN')
+    }
+  }
+
   return (
     <div className="Dashboard">
       <header className="Dashboard__header">
         Welcome back {location.state.first_name.toUpperCase()}
+        <button className="btn-premium" onClick={() => handlePremium()}>
+          TRY PREMIUM (ONLY USERS)
+        </button>
       </header>
       <main className="Dashboard-container personal">
         <article className="Dashboard__user-info">

@@ -9,6 +9,18 @@
   font-family: 'Lato', sans-serif;
 }
 
+.btn-premium {
+  float: right;
+  color: #6741d9;
+  background-color: #fff;
+  padding: 4px 10px;
+  border: none;
+  font-weight: 700;
+  margin-right: 40px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
 .Dashboard__header {
   height: 65px;
   background-color: #6741d9;

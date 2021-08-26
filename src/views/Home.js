@@ -5,6 +5,7 @@ import './Home.css'
 const Home = () => {
   const history = useHistory()
 
+  // localStorage.clear()
   const handleClick = route => history.push(`/${route}`)
 
   return (
