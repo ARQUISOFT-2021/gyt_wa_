@@ -61,7 +61,7 @@ const Dashboard = () => {
 
   const loadParcels = async () => {
     const { data } = await axios.get(
-      `http://localhost:2020/parcels/customers/${localStorage.getItem('_id')}`
+      `http://172.17.0.6:2020/parcels/customers/${localStorage.getItem('_id')}`
     )
     console.log(data.data.parcels)
     setParcels(data.data.parcels)
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
   const handleDeleteParcel = async id => {
     try {
-      await axios.delete(`http://localhost:2020/parcels/${id}`)
+      await axios.delete(`http://172.17.0.6:2020/parcels/${id}`)
       alert('Parcel Succesfully Deleted')
       loadParcels()
     } catch (error) {
@@ -79,7 +79,7 @@ const Dashboard = () => {
 
   const handleDeleteUser = async id => {
     try {
-      await axios.delete(`http://localhost:2020/${localStorage.getItem('userType')}s/${id}`)
+      await axios.delete(`http://172.17.0.6:2020/${localStorage.getItem('userType')}s/${id}`)
       alert('USER SUCCESFULLY DELETED')
       console.log('USER ID', id)
       localStorage.clear()
@@ -98,7 +98,7 @@ const Dashboard = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(`http://localhost:2020/parcels`, state)
+      const response = await axios.post(`http://172.17.0.6:2020/parcels`, state)
       console.log(response)
       alert('AWESOME: PARCEL JUST CREATED')
       loadParcels()
@@ -110,7 +110,7 @@ const Dashboard = () => {
   const handlePremium = async () => {
     try {
       const { data } = await axios.post(
-        `http://localhost:2020/${localStorage.getItem('userType')}s/premium`,
+        `http://172.17.0.6:2020/${localStorage.getItem('userType')}s/premium`,
         {
           token: localStorage.getItem('token'),
         }
@@ -156,12 +156,12 @@ const Dashboard = () => {
       <main className="Dashboard-container personal">
         <article className="Dashboard__user-info">
           <h3>My Data</h3>
-          {Object.entries(location.state).map(entry => (
+          {Object.entries(location.state).map(entry => entry[0]!=="token" && entry[0]!=="password" && entry[0]!=="__v"?(
             <div key={entry[0]} className="Dashboard__user-info--fielContainer">
               <p className="Dashboard__user-info--fieldName">{entry[0]}</p>
               <p className="Dashboard__user-info--fieldValue">{entry[1]}</p>
             </div>
-          ))}
+          ):"")}
           <button className="btn btn-delete" onClick={() => handleDeleteUser(location.state._id)}>
             DELETE ME
           </button>

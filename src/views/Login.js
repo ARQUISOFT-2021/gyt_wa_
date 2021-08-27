@@ -31,7 +31,7 @@ const Login = () => {
     // alert(state.userType)
     console.log(state)
     try {
-      const response = await axios.post(`http://localhost:2020/${state.userType}s/login`, {
+      const response = await axios.post(`http://172.17.0.6:2020/${state.userType}s/login`, {
         username: state.username,
         password: state.password,
       })

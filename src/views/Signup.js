@@ -49,7 +49,7 @@ const Signup = () => {
       const requestBody = { ...state }
       delete requestBody.userType
 
-      const response = await axios.post(`http://localhost:2020/${state.userType}s`, requestBody)
+      const response = await axios.post(`http://172.17.0.6:2020/${state.userType}s`, requestBody)
       // console.log('LOGIN SUCCESSFUL', response.data.data.customer)
       if (response.data.data.customer)
         history.push({
