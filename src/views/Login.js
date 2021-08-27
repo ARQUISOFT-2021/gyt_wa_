@@ -28,6 +28,8 @@ const Login = () => {
   const handleSubmit = async e => {
     // console.log(userType)
     e.preventDefault()
+    // alert(state.userType)
+    console.log(state)
     try {
       const response = await axios.post(`http://localhost:2020/${state.userType}s/login`, {
         username: state.username,
@@ -44,6 +46,7 @@ const Login = () => {
       else throw new Error('Required')
       console.log(state)
     } catch (error) {
+      console.log('SE FUE POR ACA')
       alert('INVALID CREDENTIALS')
     }
   }

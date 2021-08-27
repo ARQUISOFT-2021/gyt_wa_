@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Home.css'
 
 const Home = () => {
   const history = useHistory()
 
-  // localStorage.clear()
+  useEffect(() => {
+    localStorage.clear()
+  })
+
   const handleClick = route => history.push(`/${route}`)
 
   return (

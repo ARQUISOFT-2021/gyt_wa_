@@ -4,6 +4,7 @@ import Dashboard from './views/Dashboard'
 import Home from './views/Home'
 import Login from './views/Login'
 import Signup from './views/Signup'
+import CourierDashboard from './views/CourierDashboard'
 
 function App() {
   return (
@@ -24,7 +25,31 @@ function App() {
         <Dashboard />
       </Route>
       <Route exact path="/couriers/dashboard">
-        <Dashboard />
+        {/* <CourierDashboard /> */}
+        <h1
+          style={{
+            marginTop: '40vh',
+            fontSize: '60px',
+            textAlign: 'center',
+            backgroundColor: '#000',
+            color: '#fff',
+          }}
+        >
+          SUCCESSFULLY LOGGED IN. WE'LL BE BACK SOON
+        </h1>
+      </Route>
+      <Route exact path="/customers/premium">
+        <h1
+          style={{
+            marginTop: '40vh',
+            fontSize: '60px',
+            textAlign: 'center',
+            backgroundColor: '#000',
+            color: '#fff',
+          }}
+        >
+          PREMIUM
+        </h1>
       </Route>
     </Switch>
   )

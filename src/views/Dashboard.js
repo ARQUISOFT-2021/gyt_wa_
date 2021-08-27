@@ -43,10 +43,18 @@ const Dashboard = () => {
 
   const { name, sender_id, receiver_id, weight, long, width, height } = state
 
-  console.log(location.state)
-  localStorage.setItem('_id', location.state._id)
-  location.userType && localStorage.setItem('userType', location.userType)
-  localStorage.setItem('token', location.state.token)
+  useEffect(() => {
+    console.log(location.state)
+    localStorage.setItem('_id', location.state._id)
+    location.userType && localStorage.setItem('userType', location.userType)
+    localStorage.setItem('token', location.state.token)
+    // !localStorage.getItem('token') && history.push({ pathname: '/' })
+  }, [location])
+
+  // console.log(location.state)
+  // localStorage.setItem('_id', location.state._id)
+  // location.userType && localStorage.setItem('userType', location.userType)
+  // localStorage.setItem('token', location.state.token)
   // console.log('LOCAL ISSSS', localStorage.getItem('customer'))
   // delete location.state['password']
   // delete location.state['__v']
@@ -125,8 +133,20 @@ const Dashboard = () => {
     }
   }
 
+  const goHome = () => {
+    history.push({
+      // pathname: `${state.userType}s/dashboard`,
+      // state: response.data.data.customer,
+      pathname: '/',
+      // state: { userType, id: response.data.id },
+    })
+  }
+
   return (
     <div className="Dashboard">
+      <button className="btn-premium left" onClick={() => goHome()}>
+        LOG OUT
+      </button>
       <header className="Dashboard__header">
         Welcome back {location.state.first_name.toUpperCase()}
         <button className="btn-premium" onClick={() => handlePremium()}>
