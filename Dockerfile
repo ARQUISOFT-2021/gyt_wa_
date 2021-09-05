@@ -1,20 +1,46 @@
-FROM node:14
+#FROM node:14
+#
+## Create app directory
+#WORKDIR /usr/src/app
+#
+## Install app dependencies
+## A wildcard is used to ensure both package.json AND package-lock.json are copied
+## where available (npm@5+)
+## install app dependencies
+#COPY package.json ./
+#COPY package-lock.json ./
+#RUN npm install
+## If you are building your code for production
+## RUN npm ci --only=production
+#
+## Bundle app source
+#COPY . .
+#
+#EXPOSE 3000
+#CMD [ "npm", "start" ]
 
-# Create app directory
-WORKDIR /usr/src/app
+# Specify a base image
+# pull the base image
+FROM node:alpine
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
+# set the working direction
+WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
 # install app dependencies
 COPY package.json ./
-COPY package-lock.json ./
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
 
-# Bundle app source
-COPY . .
+COPY package-lock.json ./
+
+RUN npm install
+
+
+# add app
+COPY . ./
 
 EXPOSE 3000
-CMD [ "npm", "start" ]
+
+# start app
+CMD ["npm", "start"]
