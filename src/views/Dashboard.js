@@ -61,7 +61,7 @@ const Dashboard = () => {
 
   const loadParcels = async () => {
     const { data } = await axios.get(
-      `http://35.238.170.137:80/parcels/customers/${localStorage.getItem('_id')}`
+      `http://34.71.49.191:80/parcels/customers/${localStorage.getItem('_id')}`
     )
     console.log(data.data.parcels)
     setParcels(data.data.parcels)
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
   const handleDeleteParcel = async id => {
     try {
-      await axios.delete(`http://35.238.170.137:80/parcels/${id}`)
+      await axios.delete(`http://34.71.49.191:80/parcels/${id}`)
       alert('Parcel Succesfully Deleted')
       loadParcels()
     } catch (error) {
@@ -79,7 +79,7 @@ const Dashboard = () => {
 
   const handleDeleteUser = async id => {
     try {
-      await axios.delete(`http://35.238.170.137:80/${localStorage.getItem('userType')}s/${id}`)
+      await axios.delete(`http://34.71.49.191:80/${localStorage.getItem('userType')}s/${id}`)
       alert('USER SUCCESFULLY DELETED')
       console.log('USER ID', id)
       localStorage.clear()
@@ -98,7 +98,7 @@ const Dashboard = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(`http://35.238.170.137:80/parcels`, state)
+      const response = await axios.post(`http://34.71.49.191:80/parcels`, state)
       console.log(response)
       alert('AWESOME: PARCEL JUST CREATED')
       loadParcels()
@@ -110,7 +110,7 @@ const Dashboard = () => {
   const handlePremium = async () => {
     try {
       const { data } = await axios.post(
-        `http://35.238.170.137:80/${localStorage.getItem('userType')}s/premium`,
+        `http://34.71.49.191:80/${localStorage.getItem('userType')}s/premium`,
         {
           token: localStorage.getItem('token'),
         }
